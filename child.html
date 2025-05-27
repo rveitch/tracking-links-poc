@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Child Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+      background-color: #f9f9f9;
+    }
+    .success {
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .session-id {
+      background-color: #e8f5e9;
+      padding: 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    .error {
+      color: #c62828;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h3>Child Page (iframe)</h3>
+  <div id="session-info">Checking for session ID...</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sessionInfoElement = document.getElementById('session-info');
+
+      // Function to get query parameters from URL
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Get the session ID from the parent's URL
+      const sessionId = getQueryParam('tgb_id');
+
+      if (sessionId) {
+        sessionInfoElement.innerHTML = `
+          <p class="success">✅ Session ID found!</p>
+          <p>Successfully parsed session ID from the parent page URL:</p>
+          <div class="session-id">${sessionId}</div>
+        `;
+        console.log('Session ID found:', sessionId);
+      } else {
+        sessionInfoElement.innerHTML = `
+          <p class="error">❌ No session ID found!</p>
+          <p>Please add a 'tgb_id' parameter to the parent page URL.</p>
+          <p>Example: ?tgb_id=abc123</p>
+        `;
+        console.log('No session ID found in URL parameters');
+      }
+    });
+  </script>
+</body>
+</html>
