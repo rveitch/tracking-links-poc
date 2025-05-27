@@ -7,7 +7,7 @@ This project demonstrates an embedding script that creates an iframe and passes 
 - `index.html` - The parent page that includes the embed script
 - `embed.js` - The script that creates and loads the iframe
 - `child.html` - The page that will be loaded in the iframe
-- `index.js` - A simple Node.js server to serve the files
+- `server/index.js` - A simple Node.js server to serve the files
 
 ## How to Run
 
@@ -15,7 +15,7 @@ This project demonstrates an embedding script that creates an iframe and passes 
 2. Run the server:
 
 ```bash
-node index.js
+node server/index.js
 ```
 
 3. Open your browser and navigate to: http://localhost:3000/?tgb_id=abc123

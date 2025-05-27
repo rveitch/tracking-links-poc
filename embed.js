@@ -14,7 +14,7 @@
   const iframe = document.createElement('iframe');
 
   // Set iframe attributes
-  iframe.src = 'child.html' + window.location.search; // Pass along query parameters (IMPORTANT!)
+  iframe.src = window.location.pathname.replace(/\/[^/]*$/, '/') + 'child.html' + window.location.search; // Pass along query parameters (IMPORTANT!)
   iframe.width = '100%';
   iframe.height = '200px';
   iframe.style.border = '1px solid #ddd';
